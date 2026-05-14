@@ -1,0 +1,78 @@
+baseURL = "https://vettaoks.yourtests.de/"
+title   = "Vetta Oks"
+defaultContentLanguage        = "ru"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+summaryLength   = 70
+
+[params]
+  author            = "Vetta Oks"
+  formspreeEndpoint = "https://formspree.io/f/REPLACE_ME"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  noClasses = false
+
+# ── Languages ──────────────────────────────────────────────────────────────
+
+[languages.ru]
+  languageName = "RU"
+  weight       = 1
+  title        = "Vetta Oks"
+  contentDir   = "content/ru"
+  [languages.ru.params]
+    description = "Психолог и художник. Работаю с людьми, которые ищут себя."
+  [[languages.ru.menus.main]]
+    name   = "Para"
+    url    = "/"
+    weight = 1
+  [[languages.ru.menus.main]]
+    name   = "Merch"
+    url    = "/merch/"
+    weight = 2
+  [[languages.ru.menus.main]]
+    name   = "Контакт"
+    url    = "/contact/"
+    weight = 3
+
+[languages.et]
+  languageName = "ET"
+  weight       = 2
+  title        = "Vetta Oks"
+  contentDir   = "content/et"
+  [languages.et.params]
+    description = "Psühholoog ja kunstnik. Töötan inimestega, kes otsivad iseennast."
+  [[languages.et.menus.main]]
+    name   = "Para"
+    url    = "/et/"
+    weight = 1
+  [[languages.et.menus.main]]
+    name   = "Merch"
+    url    = "/et/merch/"
+    weight = 2
+  [[languages.et.menus.main]]
+    name   = "Kontakt"
+    url    = "/et/contact/"
+    weight = 3
+
+[languages.en]
+  languageName = "EN"
+  weight       = 3
+  title        = "Vetta Oks"
+  contentDir   = "content/en"
+  [languages.en.params]
+    description = "Psychologist and artist. I work with people who are looking for themselves."
+  [[languages.en.menus.main]]
+    name   = "Para"
+    url    = "/en/"
+    weight = 1
+  [[languages.en.menus.main]]
+    name   = "Merch"
+    url    = "/en/merch/"
+    weight = 2
+  [[languages.en.menus.main]]
+    name   = "Contact"
+    url    = "/en/contact/"
+    weight = 3

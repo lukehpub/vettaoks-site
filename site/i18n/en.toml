@@ -1,0 +1,89 @@
+[nav_para]
+other = "Para"
+
+[nav_merch]
+other = "Merch"
+
+[nav_contact]
+other = "Contact"
+
+[para_tag]
+other = "/ services & notes"
+
+[hero_cta]
+other = "Read about the approach →"
+
+[articles_heading]
+other = "Articles"
+
+[articles_recent]
+other = "recent posts"
+
+[all_posts]
+other = "All articles →"
+
+[read_more]
+other = "Read →"
+
+[back]
+other = "← Back"
+
+[merch_desc]
+other = "Each toy and painting is one of a kind. Write to me if something catches your eye."
+
+[filter_all]
+other = "All"
+
+[filter_toys]
+other = "Toys"
+
+[filter_paintings]
+other = "Paintings"
+
+[filter_custom]
+other = "Custom"
+
+[merch_cta_text]
+other = "Want something custom? I make toys and paintings tailored to a specific person."
+
+[merch_cta_btn]
+other = "Message on Telegram →"
+
+[contact_heading]
+other = "Get in touch"
+
+[contact_intro]
+other = "I reply within the day. Or write directly:"
+
+[form_name]
+other = "Name"
+
+[form_email]
+other = "Email"
+
+[form_message]
+other = "Message"
+
+[form_send]
+other = "Send"
+
+[status_available]
+other = "available"
+
+[status_sold]
+other = "sold"
+
+[status_custom]
+other = "custom order"
+
+[price_label]
+other = "Price"
+
+[merch_contact_cta]
+other = "Want this item? Write to me."
+
+[merch_contact_btn]
+other = "Message on Telegram"
+
+[merch_back]
+other = "← All items"

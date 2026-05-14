@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="para-tag">{{ i18n "para_tag" }}</div>
+    <h1>{{ .Title }}</h1>
+  </div>
+</div>
+
+<section class="articles-section articles-section--list">
+  <div class="articles-grid articles-grid--list">
+    {{ range .Pages }}
+    <article class="article-card">
+      <div class="article-date">{{ .Date.Format "2 Jan 2006" }}</div>
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <p>{{ .Summary }}</p>
+      {{ with .Params.tags }}
+        {{ range first 1 . }}
+          <span class="article-tag">{{ . }}</span>
+        {{ end }}
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}

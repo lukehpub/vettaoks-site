@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+{{/* ── Hero ── */}}
+<section class="para-hero">
+  <div class="para-hero-left">
+    <div class="para-tag">{{ i18n "para_tag" }}</div>
+    <h1>
+      {{ .Params.heroHeadlinePre }}<br>
+      <em>{{ .Params.heroHeadlineItalic }}</em><br>
+      {{ .Params.heroHeadlinePost }}
+    </h1>
+    <p class="para-hero-desc">{{ .Params.heroDesc }}</p>
+    <a class="btn-primary" href="{{ "para/" | relLangURL }}">{{ i18n "hero_cta" }}</a>
+  </div>
+  <div class="para-hero-right">
+    <div class="hero-pattern"></div>
+    <blockquote class="hero-quote">{{ .Params.heroQuote }}</blockquote>
+  </div>
+</section>
+
+{{/* ── Services ── */}}
+{{ with .Params.services }}
+<div class="services-strip">
+  {{ range . }}
+  <div class="service-item">
+    <div class="service-num">{{ .num }}</div>
+    <h3>{{ .title }}</h3>
+    <p>{{ .desc }}</p>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
+
+{{/* ── Articles ── */}}
+{{ $posts := where .Site.RegularPages "Section" "para" }}
+{{ $posts  = $posts | first 3 }}
+{{ if $posts }}
+<section class="articles-section">
+  <div class="section-header">
+    <h2>{{ i18n "articles_heading" }}</h2>
+    <span>{{ i18n "articles_recent" }}</span>
+  </div>
+  <div class="articles-grid">
+    {{ range $i, $post := $posts }}
+    <article class="article-card{{ if eq $i 0 }} featured{{ end }}">
+      <div class="article-date">{{ $post.Date.Format "2 Jan 2006" }}</div>
+      <h3><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
+      <p>{{ $post.Summary }}</p>
+      {{ with $post.Params.tags }}
+        {{ range first 1 . }}
+          <span class="article-tag">{{ . }}</span>
+        {{ end }}
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+  <div class="articles-more">
+    <a href="{{ "para/" | relLangURL }}" class="link-arrow">{{ i18n "all_posts" }}</a>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

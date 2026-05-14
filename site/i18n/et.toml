@@ -1,0 +1,89 @@
+[nav_para]
+other = "Para"
+
+[nav_merch]
+other = "Merch"
+
+[nav_contact]
+other = "Kontakt"
+
+[para_tag]
+other = "/ teenused ja märkmed"
+
+[hero_cta]
+other = "Loe lähemalt →"
+
+[articles_heading]
+other = "Artiklid"
+
+[articles_recent]
+other = "viimased postitused"
+
+[all_posts]
+other = "Kõik artiklid →"
+
+[read_more]
+other = "Loe →"
+
+[back]
+other = "← Tagasi"
+
+[merch_desc]
+other = "Iga mänguasi ja maal on ainueksemplar. Kirjuta, kui midagi meeldib."
+
+[filter_all]
+other = "Kõik"
+
+[filter_toys]
+other = "Mänguasjad"
+
+[filter_paintings]
+other = "Maalid"
+
+[filter_custom]
+other = "Tellimus"
+
+[merch_cta_text]
+other = "Soovid midagi tellida? Teen mänguasju ja maale konkreetsele inimesele."
+
+[merch_cta_btn]
+other = "Kirjuta Telegramis →"
+
+[contact_heading]
+other = "Võtke ühendust"
+
+[contact_intro]
+other = "Vastan päeva jooksul. Või kirjutage otse:"
+
+[form_name]
+other = "Nimi"
+
+[form_email]
+other = "Email"
+
+[form_message]
+other = "Sõnum"
+
+[form_send]
+other = "Saada"
+
+[status_available]
+other = "saadaval"
+
+[status_sold]
+other = "müüdud"
+
+[status_custom]
+other = "tellimus"
+
+[price_label]
+other = "Hind"
+
+[merch_contact_cta]
+other = "Soovite seda eset? Kirjutage mulle."
+
+[merch_contact_btn]
+other = "Kirjuta Telegramis"
+
+[merch_back]
+other = "← Kõik asjad"

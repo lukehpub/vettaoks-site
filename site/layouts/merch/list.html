@@ -1,0 +1,67 @@
+{{ define "main" }}
+
+<div class="merch-header">
+  <h1>{{ .Params.heroHeadlinePre | default "Вещи," }}<br>{{ .Params.heroHeadlineMid | default "сделанные" }} <em>{{ .Params.heroHeadlineItalic | default "вручную" }}</em></h1>
+  <p>{{ i18n "merch_desc" }}</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="*">{{ i18n "filter_all" }}</button>
+  <button class="filter-btn" data-filter="toy">{{ i18n "filter_toys" }}</button>
+  <button class="filter-btn" data-filter="painting">{{ i18n "filter_paintings" }}</button>
+  <button class="filter-btn" data-filter="custom">{{ i18n "filter_custom" }}</button>
+</div>
+
+{{ $items := where .Pages "Params.draft" "ne" true }}
+<div class="merch-grid" id="merch-grid">
+  {{ range $items }}
+  {{ $status := .Params.status | default "available" }}
+  <a class="merch-item" href="{{ .RelPermalink }}" data-type="{{ .Params.type }}">
+    <div class="merch-thumb {{ .Params.bgClass | default "bg-1" }}">
+      {{ if .Params.image }}
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy">
+      {{ else }}
+        <div class="merch-thumb-inner">{{ .Params.emoji | default "🎨" }}</div>
+      {{ end }}
+    </div>
+    <div class="merch-info">
+      <h3>{{ .Title }}</h3>
+      <div class="merch-price">{{ .Params.price }} €</div>
+      <div class="merch-type merch-type--{{ $status }}">
+        {{ .Params.type }}
+        · {{ i18n (printf "status_%s" $status) | default $status }}
+      </div>
+    </div>
+  </a>
+  {{ end }}
+</div>
+
+{{ with .Site.Data.contact.telegram }}
+{{ $handle := . | strings.TrimLeft "@" }}
+<div class="merch-cta">
+  <p>{{ i18n "merch_cta_text" }}</p>
+  <a href="https://t.me/{{ $handle }}" target="_blank" rel="noopener" class="btn-light">{{ i18n "merch_cta_btn" }}</a>
+</div>
+{{ end }}
+
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+  // Merch filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.merch-item').forEach(item => {
+        if (filter === '*' || item.dataset.type === filter) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+{{ end }}

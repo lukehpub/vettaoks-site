@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ $status := .Params.status | default "available" }}
+
+<article class="merch-single">
+  <div class="merch-single-visual {{ .Params.bgClass | default "bg-1" }}">
+    {{ if .Params.image }}
+      <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+    {{ else }}
+      <div class="merch-single-emoji">{{ .Params.emoji | default "🎨" }}</div>
+    {{ end }}
+  </div>
+
+  <div class="merch-single-info">
+    <div class="merch-type merch-type--{{ $status }}">
+      {{ .Params.type }}
+      · {{ i18n (printf "status_%s" $status) | default $status }}
+    </div>
+    <h1>{{ .Title }}</h1>
+    <div class="merch-single-price">{{ .Params.price }} €</div>
+
+    {{ if .Content }}
+    <div class="merch-single-body">{{ .Content }}</div>
+    {{ end }}
+
+    {{ if ne $status "sold" }}
+    {{ with .Site.Data.contact.telegram }}
+    {{ $handle := . | strings.TrimLeft "@" }}
+    <div class="merch-single-cta">
+      <p>{{ i18n "merch_contact_cta" }}</p>
+      <a href="https://t.me/{{ $handle }}" target="_blank" rel="noopener" class="btn-primary">{{ i18n "merch_contact_btn" }}</a>
+    </div>
+    {{ end }}
+    {{ end }}
+
+    <a href="{{ "merch/" | relLangURL }}" class="link-arrow merch-back">{{ i18n "merch_back" }}</a>
+  </div>
+</article>
+
+{{ end }}

@@ -1,0 +1,89 @@
+[nav_para]
+other = "Para"
+
+[nav_merch]
+other = "Merch"
+
+[nav_contact]
+other = "Контакт"
+
+[para_tag]
+other = "/ услуги и заметки"
+
+[hero_cta]
+other = "Читать о подходе →"
+
+[articles_heading]
+other = "Статьи"
+
+[articles_recent]
+other = "последние записи"
+
+[all_posts]
+other = "Все статьи →"
+
+[read_more]
+other = "Читать →"
+
+[back]
+other = "← Назад"
+
+[merch_desc]
+other = "Каждая игрушка и картина в единственном экземпляре. Пишите если что-то приглянулось."
+
+[filter_all]
+other = "Всё"
+
+[filter_toys]
+other = "Игрушки"
+
+[filter_paintings]
+other = "Картины"
+
+[filter_custom]
+other = "Под заказ"
+
+[merch_cta_text]
+other = "Хотите что-то на заказ? Я делаю игрушки и картины под конкретного человека."
+
+[merch_cta_btn]
+other = "Написать в Telegram →"
+
+[contact_heading]
+other = "Напишите мне"
+
+[contact_intro]
+other = "Отвечаю в течение дня. Или пишите напрямую:"
+
+[form_name]
+other = "Имя"
+
+[form_email]
+other = "Email"
+
+[form_message]
+other = "Сообщение"
+
+[form_send]
+other = "Отправить"
+
+[status_available]
+other = "в наличии"
+
+[status_sold]
+other = "продан"
+
+[status_custom]
+other = "под заказ"
+
+[price_label]
+other = "Цена"
+
+[merch_contact_cta]
+other = "Хотите этот предмет? Напишите мне."
+
+[merch_contact_btn]
+other = "Написать в Telegram"
+
+[merch_back]
+other = "← Все вещи"

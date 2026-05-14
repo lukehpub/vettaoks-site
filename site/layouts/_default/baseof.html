@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ block "head" . }}{{ end }}
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+
+  <button class="nav-burger" id="nav-burger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-panel" id="nav-panel">
+    <ul class="nav-links">
+      {{ range .Site.Menus.main }}
+        {{ $isHome    := $.IsHome }}
+        {{ $isParaSec := eq $.Section "para" }}
+        {{ $active    := false }}
+        {{ if eq .URL ($.Site.LanguagePrefix | printf "%s/") }}
+          {{ $active = or $isHome $isParaSec }}
+        {{ else if eq .URL "/" }}
+          {{ $active = or $isHome $isParaSec }}
+        {{ else }}
+          {{ $active = strings.HasPrefix $.RelPermalink .URL }}
+        {{ end }}
+        <li>
+          <a href="{{ .URL }}"{{ if $active }} class="active"{{ end }}>{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+
+    <ul class="lang-switcher">
+      {{ range .AllTranslations }}
+        <li>
+          <a href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}"
+             {{ if eq .Language.Lang $.Site.Language.Lang }}class="lang-active" aria-current="true"{{ end }}>
+            {{ .Language.LanguageName }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</nav>
+
+{{ block "main" . }}{{ end }}
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© {{ now.Year }} {{ .Site.Title }}</span>
+    <span class="footer-links">
+      {{ with .Site.Data.contact.phone }}
+        <a href="tel:{{ . | replaceRE `[^\d+]` `` }}">{{ . }}</a>
+      {{ end }}
+      {{ with .Site.Data.contact.email }}
+        <a href="mailto:{{ . }}">{{ . }}</a>
+      {{ end }}
+      {{ with .Site.Data.contact.telegram }}
+        {{ $handle := . | strings.TrimLeft "@" }}
+        <a href="https://t.me/{{ $handle }}" target="_blank" rel="noopener">{{ . }}</a>
+      {{ end }}
+    </span>
+  </div>
+</footer>
+
+<script src="{{ "js/main.js" | relURL }}"></script>
+{{ block "scripts" . }}{{ end }}
+</body>
+</html>
