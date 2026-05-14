@@ -1,0 +1,87 @@
+backend:
+  name: github
+  repo: OWNER/REPO          # replace with your GitHub username/repo
+  branch: main
+  base_url: https://sveltia-cms-auth.pages.dev  # or your own OAuth proxy
+
+media_folder: "site/static/images"
+public_folder: "/images"
+
+i18n:
+  structure: multiple_folders
+  locales: [ru, et, en]
+  default_locale: ru
+
+collections:
+
+  # ── Blog posts (Para section) ───────────────────────────────────────────
+  - name: para
+    label: "Blog / Para"
+    label_singular: "Post"
+    folder: "site/content"
+    path: "{{locale}}/para/{{slug}}"
+    create: true
+    i18n: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,   label: Title,  widget: string,   i18n: true }
+      - { name: date,    label: Date,   widget: datetime, i18n: duplicate, format: "2006-01-02" }
+      - { name: draft,   label: Draft,  widget: boolean,  default: false, i18n: duplicate }
+      - name: tags
+        label: Tags
+        widget: list
+        i18n: true
+        field: { name: tag, label: Tag, widget: string }
+      - { name: summary, label: Summary, widget: text, i18n: true, required: false }
+      - { name: body,    label: Body,    widget: markdown, i18n: true }
+
+  # ── Merch items ─────────────────────────────────────────────────────────
+  - name: merch
+    label: "Merch"
+    label_singular: "Item"
+    folder: "site/content"
+    path: "{{locale}}/merch/{{slug}}"
+    create: true
+    i18n: true
+    slug: "{{slug}}"
+    fields:
+      - { name: title,   label: Title,  widget: string,  i18n: true }
+      - name: price
+        label: "Price (€)"
+        widget: number
+        value_type: int
+        i18n: duplicate
+      - name: type
+        label: Type
+        widget: select
+        options: [toy, painting, custom]
+        i18n: duplicate
+      - name: status
+        label: Status
+        widget: select
+        options: [available, sold, custom]
+        default: available
+        i18n: duplicate
+      - { name: emoji,   label: Emoji,   widget: string,  i18n: duplicate, required: false }
+      - { name: bgClass, label: "BG class (bg-1…bg-8)", widget: string, i18n: duplicate, required: false }
+      - name: image
+        label: Image
+        widget: image
+        required: false
+        i18n: duplicate
+        media_folder: "/static/images/merch"
+        public_folder: "/images/merch"
+      - { name: body,    label: Description, widget: markdown, i18n: true, required: false }
+
+  # ── Contact / site settings ─────────────────────────────────────────────
+  - name: settings
+    label: "Settings"
+    files:
+      - name: contact
+        label: "Contact info"
+        file: "site/data/contact.yml"
+        fields:
+          - { name: email,     label: Email,              widget: string }
+          - { name: phone,     label: "Phone",            widget: string }
+          - { name: telegram,  label: "Telegram handle",  widget: string }
+          - { name: formspree, label: "Formspree endpoint", widget: string }
