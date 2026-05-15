@@ -1,8 +1,9 @@
 ---
-title: First merch good
-price: 1
+title: Photo of painting
+price: 10
 type: custom
 status: available
-emoji: :)
+emoji: 📷
+image: /images/merch/fotoofpainting.jpg
 ---
-This is another merch.
+This is photo of my costume
